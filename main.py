@@ -24,3 +24,19 @@ def add_pokemon():
     Pokemon = input("Enter Pokemon: ")
     FastMove = input("Enter Fast Move: ")
     ChargeMove = input("Enter Charge Move: ")
+    DPS = input("Enter DPS: ")
+    TDO = input("Enter TDO: ")
+    Total = input("Enter Total: ")
+    db_cursor.execute("UPDATE dragon_pokemon SET Pokemon = %s, FastMove = %s, ChargeMove = %s, DPS = %s, TDO = %s, Total = %s WHERE id = %s",
+                      (Pokemon, FastMove, ChargeMove, DPS, TDO, Total, id))
+    database.commit()
+    print(db_cursor.rowcount, "record(s) affected")
+
+
+def delete_pokemon():
+    database = sqlConnect()
+    db_cursor = database.cursor()
+    id = input("Enter id: ")
+    db_cursor.execute("DELETE FROM dragon_pokemon WHERE id = %s", (id))
+    database.commit()
+    print(db_cursor.rowcount, "record(s) deleted")
