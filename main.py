@@ -6,7 +6,7 @@ def sqlConnect():
         host="localhost",
         user="root",
         password="q0fmUEe16wNq)~2G",
-        database="PokemonPy",
+        database="pokemon",
         auth_plugin="mysql_native_password"
     )
 
@@ -27,10 +27,10 @@ def add_pokemon():
     DPS = input("Enter DPS: ")
     TDO = input("Enter TDO: ")
     Total = input("Enter Total: ")
-    db_cursor.execute("UPDATE dragon_pokemon SET Pokemon = %s, FastMove = %s, ChargeMove = %s, DPS = %s, TDO = %s, Total = %s WHERE id = %s",
-                      (Pokemon, FastMove, ChargeMove, DPS, TDO, Total, id))
+    db_cursor.execute("INSERT INTO dragon_pokemon (Pokemon, FastMove, ChargeMove, DPS, TDO, Total) VALUES (%s, %s, %s,%s, %s, %s)",
+                      (Pokemon, FastMove, ChargeMove, DPS, TDO, Total))
     database.commit()
-    print(db_cursor.rowcount, "record(s) affected")
+    print(db_cursor.rowcount, "record inserted")
 
 
 def view_pokemon():
