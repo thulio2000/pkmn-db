@@ -1,11 +1,12 @@
 import mysql.connector
+from decouple import config
 
 
 def sqlConnect():  # connects to the db
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="q0fmUEe16wNq)~2G",
+        password=config("password"),
         database="pokemon",
         auth_plugin="mysql_native_password"
     )
