@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+
+  postgres_db:
+
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+
+# crud_app:
+#   build: .
+#   links:
+#     - "postgres_db"
+#   depends_on:
+#     - "postgres_db"
